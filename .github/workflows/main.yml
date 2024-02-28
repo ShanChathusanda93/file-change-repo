@@ -49,7 +49,7 @@ jobs:
           COMMENTS_URL="$GITHUB_API/repos/$REPO_NAME/issues/$PR_NUMBER/comments"
           echo COMMENTS_URL: "$COMMENTS_URL"
           COMMENT_BODY=$(jq --null-input --arg body "$COMMENT" '{"body": $body}')
-          curl -s -H "Authorization: Bearer ${{ env.GH_TOKEN }}" \
+          curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Content-Type: application/json" \
             -d "$COMMENT_BODY" \
