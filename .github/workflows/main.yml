@@ -25,7 +25,7 @@ jobs:
 
           echo $PR_NUMBER
 
-          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN=${{ secrets.PR_COMMENT_SECRET }}
           echo $GITHUB_TOKEN
           
           CHANGED_FILES=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
