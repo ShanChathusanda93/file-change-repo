@@ -7,7 +7,7 @@ on:
       - synchronize
 
 env:
-  GH_TOKEN: ${{ secrets.PR_COMMENT }}
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   comment:
