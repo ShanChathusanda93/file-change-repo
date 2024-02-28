@@ -29,7 +29,7 @@ jobs:
           echo PR_NUMBER
           
           CHANGED_FILES=$(curl -s -H "Authorization: Bearer ${{ env.GH_TOKEN }}" \
-            "https://api.github.com/repos/$REPO_NAME/pulls/$PR_NUMBER/files" \
+            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/pulls/$PR_NUMBER/files" \
             | jq -r '.[].filename')
           
           echo CHANGED_FILES_URL: "https://api.github.com/repos/$REPO_NAME/pulls/$PR_NUMBER/files"
