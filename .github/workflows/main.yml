@@ -36,7 +36,7 @@ jobs:
           echo CHANGED_FILES_URL: "https://api.github.com/repos/$REPO_NAME/pulls/$PR_NUMBER/files"
           echo CHANGED_FILES: $CHANGED_FILES
           
-          CHANGES_COUNT=$(echo "$CHANGED_FILES" | grep -c "^\README/.*\.md$" || true)
+          CHANGES_COUNT=$(echo "$CHANGED_FILES" | grep -c "README.md$" || true)
 
           echo CHANGES_COUNT: $CHANGES_COUNT
           if [[ $CHANGES_COUNT -gt 0 ]]; then
