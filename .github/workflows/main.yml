@@ -18,13 +18,15 @@ jobs:
         id: checkout
         uses: actions/checkout@v2.3.3
 
-      - name: Add Changeset Comment
+      - name: Add README Comment
         id: add-comment
         run: |
           PR_NUMBER=$(echo "${{ github.event.pull_request.number }}")
           REPO_OWNER=$(echo "${{ github.repository_owner }}")
           REPO_NAME=$(echo "${{ github.repository }}")
           PR_HEAD_SHA=$(echo "${{ github.event.pull_request.head.sha }}")
+
+          echo $PR_NUMBER
           
           CHANGED_FILES=$(curl -s -H "Authorization: Bearer ${{ env.GH_TOKEN }}" \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/pulls/$PR_NUMBER/files" \
