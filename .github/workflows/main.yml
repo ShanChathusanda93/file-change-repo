@@ -26,6 +26,7 @@ jobs:
           echo $PR_NUMBER
 
           GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          echo $GITHUB_TOKEN
           
           CHANGED_FILES=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/pulls/$PR_NUMBER/files" \
