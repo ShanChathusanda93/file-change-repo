@@ -28,11 +28,11 @@ jobs:
           GITHUB_TOKEN=${{ secrets.PR_COMMENT_SECRET }}
           
           CHANGED_FILES=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/pulls/$PR_NUMBER/files")
+            "https://api.github.com/repos/$REPO_NAME/pulls/$PR_NUMBER/files")
 
           echo "$CHANGED_FILES"
           
-          echo CHANGED_FILES_URL: "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/pulls/$PR_NUMBER/files"
+          echo CHANGED_FILES_URL: "https://api.github.com/repos/$REPO_NAME/pulls/$PR_NUMBER/files"
           echo CHANGED_FILES: $CHANGED_FILES
           
           CHANGES_COUNT=$(echo "$CHANGED_FILES" | grep -c "^\README/.*\.md$" || true)
@@ -45,7 +45,7 @@ jobs:
           fi
           
           GITHUB_API="https://api.github.com"
-          COMMENTS_URL="$GITHUB_API/repos/$REPO_OWNER/$REPO_NAME/issues/$PR_NUMBER/comments"
+          COMMENTS_URL="$GITHUB_API/repos/$REPO_NAME/issues/$PR_NUMBER/comments"
           echo COMMENTS_URL: "$COMMENTS_URL"
           COMMENT_BODY=$(jq --null-input --arg body "$COMMENT" '{"body": $body}')
           curl -s -H "Authorization: Bearer ${{ env.GH_TOKEN }}" \
